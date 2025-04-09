@@ -7,15 +7,33 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView:View{
+    var body:some View{
+     ImageView()
+    }
+}
+struct ImageOverlay: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("Hello World!")
+                .font(.callout)
+                .padding(6)
+                .foregroundColor(.white)
+        }.background(Color.black)
+        .opacity(0.8)
+        .cornerRadius(10.0)
+        .padding(6)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct ImageView: View {
+    var body: some View {
+        VStack {
+            Image("porky 1")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .overlay(ImageOverlay(), alignment: .center)
+            Spacer()
+        }
     }
 }
